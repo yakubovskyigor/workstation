@@ -1,0 +1,29 @@
+if [[ -f /etc/bashrc ]]; then
+  # Load the main settings of the current operating system.
+  source /etc/bashrc
+fi
+
+source "${HOME}/.aliases.bash"
+source "${HOME}/.exports.bash"
+source "${HOME}/.functions.bash"
+
+# Create a new meta storage of the executed commands.
+shopt -s checkhash
+
+# Check the size of the current screen.
+shopt -s checkwinsize
+
+# Use recursive commands expansion.
+shopt -s globstar 2> /dev/null
+
+# Use case-insensitive expansion.
+shopt -s nocaseglob
+
+# Save the executed commands to the main history storage.
+shopt -s histappend
+
+# Activate the necessary completions to enhance the current shell experience.
+# See information: https://stackoverflow.com/questions/12399002
+source /usr/share/bash-completion/completions/git 2> /dev/null
+
+source /usr/share/doc/fzf/examples/key-bindings.bash 2> /dev/null
